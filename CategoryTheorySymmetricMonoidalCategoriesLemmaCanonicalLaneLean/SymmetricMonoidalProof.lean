@@ -1,0 +1,20 @@
+import HautevilleHouse.CategoryTheorySymmetricMonoidalCategoriesLemmaCanonicalLaneLean.CoherenceProofTerms
+import HautevilleHouse.CategoryTheorySymmetricMonoidalCategoriesLemmaCanonicalLaneLean.SymmetricMonoidalObjects
+
+namespace HautevilleHouse
+namespace CategoryTheorySymmetricMonoidalCategoriesLemmaCanonicalLaneLean
+
+structure SymmetricMonoidalProofCertificate where
+  coherencePackage : CoherencePackage
+  coherenceEvidence : CoherenceEvidence coherencePackage
+  coherenceProofTerms : CoherenceProofTerms coherencePackage
+  admissibleObject : SymmetricMonoidalAdmittedObject
+  bridgeClosed : SymmetricMonoidalWitnessClosed admissibleObject
+  gateClosed : Prop
+
+theorem symmetric_monoidal_certificate_closed (C : SymmetricMonoidalProofCertificate) :
+    SymmetricMonoidalWitnessClosed C.admissibleObject ∧ C.gateClosed := by
+  exact And.intro C.bridgeClosed C.gateClosed
+
+end HautevilleHouse.CategoryTheorySymmetricMonoidalCategoriesLemmaCanonicalLaneLean
+end HautevilleHouse
